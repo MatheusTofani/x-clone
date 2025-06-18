@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-+rcq8zb@m1m0b49c#7svg8#e_6i(z)zndy8lk!+_2rmpa6i8u6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['matheustofani.pythonanywhere.com']
+ALLOWED_HOSTS = ['back-x-project.fly.dev']
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'accounts',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,9 +53,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
+CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {
@@ -71,6 +76,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://192.168.0.18:3000",
+]
 
 
 # Database
